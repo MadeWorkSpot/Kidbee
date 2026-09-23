@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240">
+  <!-- Outer Orange Badge Wings Shape (Exact Match to Logo 1) -->
+  <g>
+    <!-- Vibrant KidBee Orange Background Shape -->
+    <path d="M 65 15 C 25 15 5 45 5 95 C 5 145 25 220 75 220 C 115 220 125 185 145 150 C 175 210 225 210 225 160 C 225 110 175 75 145 75 C 195 40 195 15 145 15 C 110 15 85 15 65 15 Z" fill="#F14C19"/>
+    <path d="M 70 12 C 30 12 8 42 8 92 C 8 142 26 218 78 218 C 116 218 128 182 148 146 C 178 206 228 206 228 158 C 228 110 178 76 148 76 C 196 42 196 12 148 12 C 112 12 88 12 70 12 Z" fill="#F14C19"/>
+  </g>
+
+  <!-- White Typography inside Badge -->
+  <g fill="#FFFFFF" text-anchor="middle">
+    <!-- "Kid" -->
+    <text x="110" y="92" font-family="'Fredoka', 'Bubblegum Sans', sans-serif" font-weight="700" font-size="64" letter-spacing="-1">Kid</text>
+
+    <!-- "Bee" -->
+    <text x="115" y="152" font-family="'Fredoka', 'Bubblegum Sans', sans-serif" font-weight="700" font-size="64" letter-spacing="-1">Bee</text>
+
+    <!-- "DAY CARE" Tagline in subtle curve -->
+    <text x="120" y="186" font-family="'Outfit', 'Fredoka', sans-serif" font-weight="700" font-size="16" letter-spacing="2.5">DAY CARE</text>
+  </g>
+</svg>
