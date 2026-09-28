@@ -51,12 +51,15 @@
         <a href="#reviews" class="nav-link">REVIEWS</a>
         <a href="#gallery" class="nav-link">GALLERY</a>
         <a href="#contact" class="nav-link">CONTACT US</a>
+        <a href="admission.html" class="nav-link nav-mobile-admission-link">
+          <i class="fa-solid fa-id-card"></i> ADMISSION REGISTRATION
+        </a>
       </nav>
 
       <!-- Colored Admission Registration Button in header-actions -->
       <div class="header-actions">
-        <a href="#admission" class="btn btn-navy-sm" id="admissionRegisterHeaderBtn">
-          <i class="fa-solid fa-user-plus"></i> ADMISSION REGISTRATION
+        <a href="admission.html" class="btn btn-navy-sm header-admission-btn" id="admissionRegisterHeaderBtn">
+          <i class="fa-solid fa-user-plus"></i> <span class="btn-text-full">ADMISSION REGISTRATION</span><span class="btn-text-short">REGISTER</span>
         </a>
         <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu">
           <i class="fa-solid fa-bars"></i>
@@ -255,7 +258,7 @@
           <p>Give your child a vibrant foundation for lifelong learning in a loving, safe, and inspiring daycare
             environment.</p>
         </div>
-        <a href="#admission" class="btn btn-navy"><i class="fa-solid fa-id-card"></i> ENROLL NOW <i
+        <a href="admission.html" class="btn btn-navy"><i class="fa-solid fa-id-card"></i> ENROLL NOW <i
             class="fa-solid fa-arrow-right"></i></a>
       </div>
     </div>
@@ -394,268 +397,7 @@
     </div>
   </section>
 
-  <!-- ==========================================================================
-       Comprehensive Daycare Admission Registration Form Section
-       ========================================================================== -->
-  <section class="section-padding admission-section" id="admission">
-    <div class="container">
-      <div class="section-header">
-        <span class="badge-pill badge-coral"><i class="fa-solid fa-id-card"></i> ADMISSIONS OPEN</span>
-        <h2>Daycare <span>Admission Form</span></h2>
-        <p>Please complete all details below to register your child for daycare admission.</p>
-      </div>
 
-      <div class="inquiry-form-card comprehensive-form-card" style="max-width: 960px; margin: 0 auto;">
-        <form id="admissionRegistrationForm">
-
-          <!-- SECTION 1: CHILD DETAILS -->
-          <div class="form-section-block">
-            <h3 class="form-block-title"><i class="fa-solid fa-child"></i> 1. Child Details</h3>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="childName">Child Name *</label>
-                <input type="text" id="childName" class="form-control" placeholder="Full name of child" required>
-              </div>
-              <div class="form-group">
-                <label for="childDob">Date of Birth *</label>
-                <input type="date" id="childDob" class="form-control" required>
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="childAge">Age *</label>
-                <input type="text" id="childAge" class="form-control" placeholder="e.g. 2 Years 4 Months" required>
-              </div>
-              <div class="form-group">
-                <label for="childGender">Gender *</label>
-                <select id="childGender" class="form-control" required>
-                  <option value="">Select Gender</option>
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="childBlood">Blood Group</label>
-                <select id="childBlood" class="form-control">
-                  <option value="">Select Blood Group</option>
-                  <option value="A+">A+</option>
-                  <option value="A-">A-</option>
-                  <option value="B+">B+</option>
-                  <option value="B-">B-</option>
-                  <option value="O+">O+</option>
-                  <option value="O-">O-</option>
-                  <option value="AB+">AB+</option>
-                  <option value="AB-">AB-</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="childAllergies">Allergies (if any)</label>
-                <input type="text" id="childAllergies" class="form-control"
-                  placeholder="List any food or dust allergies">
-              </div>
-              <div class="form-group">
-                <label for="childMedical">Medical Condition (if any)</label>
-                <input type="text" id="childMedical" class="form-control"
-                  placeholder="Describe medical condition or notes">
-              </div>
-            </div>
-          </div>
-
-          <!-- SECTION 2: PARENT / GUARDIAN DETAILS -->
-          <div class="form-section-block">
-            <h3 class="form-block-title"><i class="fa-solid fa-users"></i> 2. Parent / Guardian Details</h3>
-
-            <h4 class="form-sub-heading"><i class="fa-solid fa-user-tie"></i> Father's Details</h4>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="fatherName">Father's Name *</label>
-                <input type="text" id="fatherName" class="form-control" placeholder="Father's full name" required>
-              </div>
-              <div class="form-group">
-                <label for="fatherPhone">Father's Phone Number *</label>
-                <input type="tel" id="fatherPhone" class="form-control" placeholder="Mobile phone number" required>
-              </div>
-              <div class="form-group">
-                <label for="fatherOccupation">Occupation</label>
-                <input type="text" id="fatherOccupation" class="form-control" placeholder="Father's occupation">
-              </div>
-            </div>
-
-            <h4 class="form-sub-heading" style="margin-top: 1rem;"><i class="fa-solid fa-user-nurse"></i> Mother's
-              Details</h4>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="motherName">Mother's Name *</label>
-                <input type="text" id="motherName" class="form-control" placeholder="Mother's full name" required>
-              </div>
-              <div class="form-group">
-                <label for="motherPhone">Mother's Phone Number *</label>
-                <input type="tel" id="motherPhone" class="form-control" placeholder="Mobile phone number" required>
-              </div>
-              <div class="form-group">
-                <label for="motherOccupation">Occupation</label>
-                <input type="text" id="motherOccupation" class="form-control" placeholder="Mother's occupation">
-              </div>
-            </div>
-
-            <div class="form-group" style="margin-top: 1rem;">
-              <label for="residentialAddress">Residential Address *</label>
-              <textarea id="residentialAddress" class="form-control" rows="2"
-                placeholder="Full residential home address..." required></textarea>
-            </div>
-
-            <h4 class="form-sub-heading" style="margin-top: 1.25rem;"><i class="fa-solid fa-phone-volume"></i> Emergency
-              Contact (Other than Parents)</h4>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="emergencyName">Contact Name *</label>
-                <input type="text" id="emergencyName" class="form-control" placeholder="Emergency contact name"
-                  required>
-              </div>
-              <div class="form-group">
-                <label for="emergencyRelation">Relationship *</label>
-                <input type="text" id="emergencyRelation" class="form-control" placeholder="e.g. Grandparent / Uncle"
-                  required>
-              </div>
-              <div class="form-group">
-                <label for="emergencyPhone">Phone Number *</label>
-                <input type="tel" id="emergencyPhone" class="form-control" placeholder="Emergency phone number"
-                  required>
-              </div>
-            </div>
-          </div>
-
-          <!-- SECTION 3: PICKUP AUTHORIZATION -->
-          <div class="form-section-block">
-            <h3 class="form-block-title"><i class="fa-solid fa-id-card-clip"></i> 3. Pickup Authorization</h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Persons authorized to pick up
-              the child from daycare:</p>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="pickup1Name">1. Name</label>
-                <input type="text" id="pickup1Name" class="form-control" placeholder="Authorized person 1 name">
-              </div>
-              <div class="form-group">
-                <label for="pickup1Phone">1. Phone</label>
-                <input type="tel" id="pickup1Phone" class="form-control" placeholder="Phone number">
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="pickup2Name">2. Name</label>
-                <input type="text" id="pickup2Name" class="form-control" placeholder="Authorized person 2 name">
-              </div>
-              <div class="form-group">
-                <label for="pickup2Phone">2. Phone</label>
-                <input type="tel" id="pickup2Phone" class="form-control" placeholder="Phone number">
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="pickup3Name">3. Name</label>
-                <input type="text" id="pickup3Name" class="form-control" placeholder="Authorized person 3 name">
-              </div>
-              <div class="form-group">
-                <label for="pickup3Phone">3. Phone</label>
-                <input type="tel" id="pickup3Phone" class="form-control" placeholder="Phone number">
-              </div>
-            </div>
-          </div>
-
-          <!-- SECTION 4: DAY CARE TIMING -->
-          <div class="form-section-block">
-            <h3 class="form-block-title"><i class="fa-solid fa-clock"></i> 4. Day Care Timing</h3>
-
-            <div class="form-group">
-              <label>Select Plan Option *</label>
-              <div class="radio-options-grid">
-                <label class="radio-card-label">
-                  <input type="radio" name="timingPlan" value="Full Day" required>
-                  <span>Full Day</span>
-                </label>
-                <label class="radio-card-label">
-                  <input type="radio" name="timingPlan" value="Half Day">
-                  <span>Half Day</span>
-                </label>
-                <label class="radio-card-label">
-                  <input type="radio" name="timingPlan" value="After School Care">
-                  <span>After School Care</span>
-                </label>
-              </div>
-            </div>
-
-            <div class="form-group" style="margin-top: 1rem;">
-              <label for="preferredTiming">Preferred Timing (Specify Hours)</label>
-              <input type="text" id="preferredTiming" class="form-control" placeholder="e.g. 8:00 AM - 4:00 PM">
-            </div>
-          </div>
-
-          <!-- SECTION 5: HEALTH DECLARATION -->
-          <div class="form-section-block">
-            <h3 class="form-block-title"><i class="fa-solid fa-notes-medical"></i> 5. Health Declaration</h3>
-
-            <div class="form-group">
-              <label>Is the child currently under any medication? *</label>
-              <div class="radio-inline-group">
-                <label><input type="radio" name="underMedication" value="Yes" required> Yes</label>
-                <label><input type="radio" name="underMedication" value="No"> No</label>
-              </div>
-              <input type="text" id="medicationDetails" class="form-control"
-                placeholder="If yes, specify medication details" style="margin-top: 0.5rem;">
-            </div>
-
-            <div class="form-group" style="margin-top: 1.25rem;">
-              <label>Any food restrictions? *</label>
-              <div class="radio-inline-group">
-                <label><input type="radio" name="foodRestrictions" value="Yes" required> Yes</label>
-                <label><input type="radio" name="foodRestrictions" value="No"> No</label>
-              </div>
-              <input type="text" id="foodRestrictionDetails" class="form-control"
-                placeholder="If yes, specify food restriction details" style="margin-top: 0.5rem;">
-            </div>
-          </div>
-
-          <!-- SECTION 6: PARENT CONSENT DECLARATION -->
-          <div class="form-section-block">
-            <h3 class="form-block-title"><i class="fa-solid fa-signature"></i> 6. Parent Consent Declaration</h3>
-
-            <div class="consent-box">
-              <label class="checkbox-label">
-                <input type="checkbox" id="consentCheckbox" required>
-                <span>I hereby declare that the information provided above is true. I agree to follow the rules and
-                  regulations of the daycare centre.</span>
-              </label>
-            </div>
-
-            <div class="form-row" style="margin-top: 1.25rem;">
-              <div class="form-group">
-                <label for="parentSignature">Parent / Guardian Signature (Full Name) *</label>
-                <input type="text" id="parentSignature" class="form-control"
-                  placeholder="Type parent's full name as signature" required>
-              </div>
-              <div class="form-group">
-                <label for="declarationDate">Date *</label>
-                <input type="date" id="declarationDate" class="form-control" required>
-              </div>
-            </div>
-          </div>
-
-          <button type="submit" class="btn btn-navy"
-            style="width: 100%; justify-content: center; margin-top: 1.5rem;"><i class="fa-solid fa-paper-plane"></i>
-            Submit Daycare Admission Form</button>
-        </form>
-      </div>
-    </div>
-  </section>
 
   <!-- ==========================================================================
        Contact Us & Embedded Google Map Section
@@ -767,6 +509,7 @@
               <li><a href="#reviews">Reviews</a></li>
               <li><a href="#gallery">Gallery</a></li>
               <li><a href="#contact">Contact Us</a></li>
+              <li><a href="admission.html">Admission Form</a></li>
             </ul>
           </div>
         </div>
