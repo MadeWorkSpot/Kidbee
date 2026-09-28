@@ -57,7 +57,8 @@
 
       <div class="header-actions">
         <a href="index.html" class="btn btn-navy-sm header-admission-btn" id="backToHomeHeaderBtn">
-          <i class="fa-solid fa-arrow-left"></i> <span class="btn-text-full">BACK TO HOME</span><span class="btn-text-short">HOME</span>
+          <i class="fa-solid fa-arrow-left"></i> <span class="btn-text-full">BACK TO HOME</span><span
+            class="btn-text-short">HOME</span>
         </a>
         <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu">
           <i class="fa-solid fa-bars"></i>
@@ -69,11 +70,13 @@
   <!-- ==========================================================================
        Page Banner / Breadcrumb Section
        ========================================================================== -->
-  <section class="section-padding" style="background: var(--bg-soft); padding: 3rem 0 2rem 0; border-bottom: 1px solid var(--border-color);">
+  <section class="section-padding"
+    style="background: var(--bg-soft); padding: 3rem 0 2rem 0; border-bottom: 1px solid var(--border-color);">
     <div class="container">
       <div class="section-header" style="margin-bottom: 0;">
         <span class="badge-pill badge-coral"><i class="fa-solid fa-id-card"></i> ADMISSIONS OPEN</span>
-        <h1 style="font-size: 2.8rem; margin: 0.8rem 0 0.75rem 0; color: var(--color-navy);">Daycare <span>Admission Form</span></h1>
+        <h1 style="font-size: 2.8rem; margin: 0.8rem 0 0.75rem 0; color: var(--color-navy);">Daycare <span>Admission
+            Form</span></h1>
         <p style="max-width: 680px; margin: 0 auto; color: var(--text-body);">
           Please complete all details below to register your child for daycare admission at KidBee Day Care.
         </p>
@@ -87,7 +90,11 @@
   <section class="section-padding admission-section" id="admission">
     <div class="container">
       <div class="inquiry-form-card comprehensive-form-card" style="max-width: 960px; margin: 0 auto;">
-        <form id="admissionRegistrationForm">
+        <form id="admissionRegistrationForm" action="https://formsubmit.co/jomincoc@gmail.com" method="POST">
+          <!-- Email Form Configuration -->
+          <input type="hidden" name="_subject" value="New Daycare Admission Registration - KidBee Day Care">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
 
           <!-- SECTION 1: CHILD DETAILS -->
           <div class="form-section-block">
@@ -96,22 +103,24 @@
             <div class="form-row">
               <div class="form-group">
                 <label for="childName">Child Name *</label>
-                <input type="text" id="childName" class="form-control" placeholder="Full name of child" required>
+                <input type="text" id="childName" name="Child_Name" class="form-control"
+                  placeholder="Full name of child" required>
               </div>
               <div class="form-group">
                 <label for="childDob">Date of Birth *</label>
-                <input type="date" id="childDob" class="form-control" required>
+                <input type="date" id="childDob" name="Date_of_Birth" class="form-control" required>
               </div>
             </div>
 
             <div class="form-row">
               <div class="form-group">
                 <label for="childAge">Age *</label>
-                <input type="text" id="childAge" class="form-control" placeholder="e.g. 2 Years 4 Months" required>
+                <input type="text" id="childAge" name="Child_Age" class="form-control"
+                  placeholder="e.g. 2 Years 4 Months" required>
               </div>
               <div class="form-group">
                 <label for="childGender">Gender *</label>
-                <select id="childGender" class="form-control" required>
+                <select id="childGender" name="Child_Gender" class="form-control" required>
                   <option value="">Select Gender</option>
                   <option value="Male">Male</option>
                   <option value="Female">Female</option>
@@ -120,7 +129,7 @@
               </div>
               <div class="form-group">
                 <label for="childBlood">Blood Group</label>
-                <select id="childBlood" class="form-control">
+                <select id="childBlood" name="Blood_Group" class="form-control">
                   <option value="">Select Blood Group</option>
                   <option value="A+">A+</option>
                   <option value="A-">A-</option>
@@ -137,12 +146,12 @@
             <div class="form-row">
               <div class="form-group">
                 <label for="childAllergies">Allergies (if any)</label>
-                <input type="text" id="childAllergies" class="form-control"
+                <input type="text" id="childAllergies" name="Allergies" class="form-control"
                   placeholder="List any food or dust allergies">
               </div>
               <div class="form-group">
                 <label for="childMedical">Medical Condition (if any)</label>
-                <input type="text" id="childMedical" class="form-control"
+                <input type="text" id="childMedical" name="Medical_Condition" class="form-control"
                   placeholder="Describe medical condition or notes">
               </div>
             </div>
@@ -156,15 +165,18 @@
             <div class="form-row">
               <div class="form-group">
                 <label for="fatherName">Father's Name *</label>
-                <input type="text" id="fatherName" class="form-control" placeholder="Father's full name" required>
+                <input type="text" id="fatherName" name="Father_Name" class="form-control"
+                  placeholder="Father's full name" required>
               </div>
               <div class="form-group">
                 <label for="fatherPhone">Father's Phone Number *</label>
-                <input type="tel" id="fatherPhone" class="form-control" placeholder="Mobile phone number" required>
+                <input type="tel" id="fatherPhone" name="Father_Phone" class="form-control"
+                  placeholder="Mobile phone number" required>
               </div>
               <div class="form-group">
                 <label for="fatherOccupation">Occupation</label>
-                <input type="text" id="fatherOccupation" class="form-control" placeholder="Father's occupation">
+                <input type="text" id="fatherOccupation" name="Father_Occupation" class="form-control"
+                  placeholder="Father's occupation">
               </div>
             </div>
 
@@ -173,21 +185,24 @@
             <div class="form-row">
               <div class="form-group">
                 <label for="motherName">Mother's Name *</label>
-                <input type="text" id="motherName" class="form-control" placeholder="Mother's full name" required>
+                <input type="text" id="motherName" name="Mother_Name" class="form-control"
+                  placeholder="Mother's full name" required>
               </div>
               <div class="form-group">
                 <label for="motherPhone">Mother's Phone Number *</label>
-                <input type="tel" id="motherPhone" class="form-control" placeholder="Mobile phone number" required>
+                <input type="tel" id="motherPhone" name="Mother_Phone" class="form-control"
+                  placeholder="Mobile phone number" required>
               </div>
               <div class="form-group">
                 <label for="motherOccupation">Occupation</label>
-                <input type="text" id="motherOccupation" class="form-control" placeholder="Mother's occupation">
+                <input type="text" id="motherOccupation" name="Mother_Occupation" class="form-control"
+                  placeholder="Mother's occupation">
               </div>
             </div>
 
             <div class="form-group" style="margin-top: 1rem;">
               <label for="residentialAddress">Residential Address *</label>
-              <textarea id="residentialAddress" class="form-control" rows="2"
+              <textarea id="residentialAddress" name="Residential_Address" class="form-control" rows="2"
                 placeholder="Full residential home address..." required></textarea>
             </div>
 
@@ -196,18 +211,18 @@
             <div class="form-row">
               <div class="form-group">
                 <label for="emergencyName">Contact Name *</label>
-                <input type="text" id="emergencyName" class="form-control" placeholder="Emergency contact name"
-                  required>
+                <input type="text" id="emergencyName" name="Emergency_Contact_Name" class="form-control"
+                  placeholder="Emergency contact name" required>
               </div>
               <div class="form-group">
                 <label for="emergencyRelation">Relationship *</label>
-                <input type="text" id="emergencyRelation" class="form-control" placeholder="e.g. Grandparent / Uncle"
-                  required>
+                <input type="text" id="emergencyRelation" name="Emergency_Relationship" class="form-control"
+                  placeholder="e.g. Grandparent / Uncle" required>
               </div>
               <div class="form-group">
                 <label for="emergencyPhone">Phone Number *</label>
-                <input type="tel" id="emergencyPhone" class="form-control" placeholder="Emergency phone number"
-                  required>
+                <input type="tel" id="emergencyPhone" name="Emergency_Phone" class="form-control"
+                  placeholder="Emergency phone number" required>
               </div>
             </div>
           </div>
@@ -221,33 +236,39 @@
             <div class="form-row">
               <div class="form-group">
                 <label for="pickup1Name">1. Name</label>
-                <input type="text" id="pickup1Name" class="form-control" placeholder="Authorized person 1 name">
+                <input type="text" id="pickup1Name" name="Pickup_Person_1_Name" class="form-control"
+                  placeholder="Authorized person 1 name">
               </div>
               <div class="form-group">
                 <label for="pickup1Phone">1. Phone</label>
-                <input type="tel" id="pickup1Phone" class="form-control" placeholder="Phone number">
+                <input type="tel" id="pickup1Phone" name="Pickup_Person_1_Phone" class="form-control"
+                  placeholder="Phone number">
               </div>
             </div>
 
             <div class="form-row">
               <div class="form-group">
                 <label for="pickup2Name">2. Name</label>
-                <input type="text" id="pickup2Name" class="form-control" placeholder="Authorized person 2 name">
+                <input type="text" id="pickup2Name" name="Pickup_Person_2_Name" class="form-control"
+                  placeholder="Authorized person 2 name">
               </div>
               <div class="form-group">
                 <label for="pickup2Phone">2. Phone</label>
-                <input type="tel" id="pickup2Phone" class="form-control" placeholder="Phone number">
+                <input type="tel" id="pickup2Phone" name="Pickup_Person_2_Phone" class="form-control"
+                  placeholder="Phone number">
               </div>
             </div>
 
             <div class="form-row">
               <div class="form-group">
                 <label for="pickup3Name">3. Name</label>
-                <input type="text" id="pickup3Name" class="form-control" placeholder="Authorized person 3 name">
+                <input type="text" id="pickup3Name" name="Pickup_Person_3_Name" class="form-control"
+                  placeholder="Authorized person 3 name">
               </div>
               <div class="form-group">
                 <label for="pickup3Phone">3. Phone</label>
-                <input type="tel" id="pickup3Phone" class="form-control" placeholder="Phone number">
+                <input type="tel" id="pickup3Phone" name="Pickup_Person_3_Phone" class="form-control"
+                  placeholder="Phone number">
               </div>
             </div>
           </div>
@@ -260,15 +281,15 @@
               <label>Select Plan Option *</label>
               <div class="radio-options-grid">
                 <label class="radio-card-label">
-                  <input type="radio" name="timingPlan" value="Full Day" required>
+                  <input type="radio" name="Timing_Plan" value="Full Day" required>
                   <span>Full Day</span>
                 </label>
                 <label class="radio-card-label">
-                  <input type="radio" name="timingPlan" value="Half Day">
+                  <input type="radio" name="Timing_Plan" value="Half Day">
                   <span>Half Day</span>
                 </label>
                 <label class="radio-card-label">
-                  <input type="radio" name="timingPlan" value="After School Care">
+                  <input type="radio" name="Timing_Plan" value="After School Care">
                   <span>After School Care</span>
                 </label>
               </div>
@@ -276,7 +297,8 @@
 
             <div class="form-group" style="margin-top: 1rem;">
               <label for="preferredTiming">Preferred Timing (Specify Hours)</label>
-              <input type="text" id="preferredTiming" class="form-control" placeholder="e.g. 8:00 AM - 4:00 PM">
+              <input type="text" id="preferredTiming" name="Preferred_Timing_Hours" class="form-control"
+                placeholder="e.g. 8:00 AM - 4:00 PM">
             </div>
           </div>
 
@@ -287,20 +309,20 @@
             <div class="form-group">
               <label>Is the child currently under any medication? *</label>
               <div class="radio-inline-group">
-                <label><input type="radio" name="underMedication" value="Yes" required> Yes</label>
-                <label><input type="radio" name="underMedication" value="No"> No</label>
+                <label><input type="radio" name="Under_Medication" value="Yes" required> Yes</label>
+                <label><input type="radio" name="Under_Medication" value="No"> No</label>
               </div>
-              <input type="text" id="medicationDetails" class="form-control"
+              <input type="text" id="medicationDetails" name="Medication_Details" class="form-control"
                 placeholder="If yes, specify medication details" style="margin-top: 0.5rem;">
             </div>
 
             <div class="form-group" style="margin-top: 1.25rem;">
               <label>Any food restrictions? *</label>
               <div class="radio-inline-group">
-                <label><input type="radio" name="foodRestrictions" value="Yes" required> Yes</label>
-                <label><input type="radio" name="foodRestrictions" value="No"> No</label>
+                <label><input type="radio" name="Food_Restrictions" value="Yes" required> Yes</label>
+                <label><input type="radio" name="Food_Restrictions" value="No"> No</label>
               </div>
-              <input type="text" id="foodRestrictionDetails" class="form-control"
+              <input type="text" id="foodRestrictionDetails" name="Food_Restriction_Details" class="form-control"
                 placeholder="If yes, specify food restriction details" style="margin-top: 0.5rem;">
             </div>
           </div>
@@ -311,7 +333,8 @@
 
             <div class="consent-box">
               <label class="checkbox-label">
-                <input type="checkbox" id="consentCheckbox" required>
+                <input type="checkbox" id="consentCheckbox" name="Consent_Agreed"
+                  value="Yes, I agree to daycare rules and regulations" required>
                 <span>I hereby declare that the information provided above is true. I agree to follow the rules and
                   regulations of the daycare centre.</span>
               </label>
@@ -320,17 +343,17 @@
             <div class="form-row" style="margin-top: 1.25rem;">
               <div class="form-group">
                 <label for="parentSignature">Parent / Guardian Signature (Full Name) *</label>
-                <input type="text" id="parentSignature" class="form-control"
+                <input type="text" id="parentSignature" name="Parent_Signature" class="form-control"
                   placeholder="Type parent's full name as signature" required>
               </div>
               <div class="form-group">
                 <label for="declarationDate">Date *</label>
-                <input type="date" id="declarationDate" class="form-control" required>
+                <input type="date" id="declarationDate" name="Declaration_Date" class="form-control" required>
               </div>
             </div>
           </div>
 
-          <button type="submit" class="btn btn-navy"
+          <button type="submit" class="btn btn-navy" id="submitAdmissionBtn"
             style="width: 100%; justify-content: center; margin-top: 1.5rem;"><i class="fa-solid fa-paper-plane"></i>
             Submit Daycare Admission Form</button>
         </form>

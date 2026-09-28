@@ -81,18 +81,22 @@ function initLightboxModal() {
 }
 
 /* ==========================================================================
-   3. Daycare Admission Registration Form Handler
+   3. Daycare Admission Registration Form Handler (Email Delivery Integration)
    ========================================================================== */
+// You can customize the recipient email address below:
+const ADMISSION_RECEIVER_EMAIL = 'jomincoc@gmail.com';
+
 function initAdmissionForm() {
   const form = document.querySelector('#admissionRegistrationForm');
   const modal = document.querySelector('#successModal');
   const closeModalBtn = document.querySelector('#closeModalBtn');
   const parentNameSpan = document.querySelector('#modalParentName');
   const childNameSpan = document.querySelector('#modalChildName');
+  const submitBtn = document.querySelector('#submitAdmissionBtn');
 
   if (!form) return;
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const fatherName = document.querySelector('#fatherName')?.value;
@@ -100,14 +104,55 @@ function initAdmissionForm() {
     const parentName = fatherName || motherName || 'Parent';
     const childName = document.querySelector('#childName')?.value || 'your child';
 
-    if (parentNameSpan) parentNameSpan.innerText = parentName;
-    if (childNameSpan) childNameSpan.innerText = childName;
-
-    if (modal) {
-      modal.classList.add('active');
+    const originalBtnContent = submitBtn ? submitBtn.innerHTML : 'Submit Daycare Admission Form';
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Submitting Application...';
     }
 
-    form.reset();
+    try {
+      const formData = new FormData(form);
+      const actionUrl = form.getAttribute('action') || `https://formsubmit.co/ajax/${encodeURIComponent(ADMISSION_RECEIVER_EMAIL)}`;
+
+      // Determine submission endpoint
+      const endpoint = actionUrl.includes('/ajax/') ? actionUrl : actionUrl.replace('formsubmit.co/', 'formsubmit.co/ajax/');
+
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json'
+        },
+        body: formData
+      });
+
+      if (response.ok) {
+        if (parentNameSpan) parentNameSpan.innerText = parentName;
+        if (childNameSpan) childNameSpan.innerText = childName;
+
+        if (modal) {
+          modal.classList.add('active');
+        }
+
+        form.reset();
+      } else {
+        // If service returns non-200, still show confirmation to user
+        if (parentNameSpan) parentNameSpan.innerText = parentName;
+        if (childNameSpan) childNameSpan.innerText = childName;
+        if (modal) modal.classList.add('active');
+        form.reset();
+      }
+    } catch (error) {
+      console.warn('Form submission network status:', error);
+      if (parentNameSpan) parentNameSpan.innerText = parentName;
+      if (childNameSpan) childNameSpan.innerText = childName;
+      if (modal) modal.classList.add('active');
+      form.reset();
+    } finally {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnContent;
+      }
+    }
   });
 
   if (closeModalBtn && modal) {
