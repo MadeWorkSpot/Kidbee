@@ -238,14 +238,12 @@ async function generateAdmissionPDF(data) {
   const container = document.createElement('div');
   container.className = 'admission-pdf-document';
   container.style.cssText = `
-    position: fixed;
-    top: -9999px;
-    left: -9999px;
-    width: 794px;
+    width: 748px;
+    max-width: 100%;
     background: #ffffff;
     color: #0f172a;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    padding: 28px 32px;
+    padding: 18px 22px;
     box-sizing: border-box;
     line-height: 1.35;
   `;
@@ -406,15 +404,19 @@ async function generateAdmissionPDF(data) {
     </div>
   `;
 
-  document.body.appendChild(container);
-
   try {
     const filename = `KidBee_Admission_${data.childName.replace(/[^a-zA-Z0-9]/g, '_')}_${data.appId}.pdf`;
     const opt = {
       margin: [6, 6, 6, 6],
       filename: filename,
       image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { scale: 2, useCORS: true, logging: false },
+      html2canvas: {
+        scale: 2,
+        useCORS: true,
+        logging: false,
+        scrollY: 0,
+        scrollX: 0
+      },
       jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
     };
 
@@ -425,8 +427,6 @@ async function generateAdmissionPDF(data) {
     }
   } catch (err) {
     console.error('PDF generation error:', err);
-  } finally {
-    container.remove();
   }
 }
 
