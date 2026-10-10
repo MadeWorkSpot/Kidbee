@@ -59,7 +59,8 @@
       <!-- Colored Admission Registration Button in header-actions -->
       <div class="header-actions">
         <a href="admission.html" class="btn btn-navy-sm header-admission-btn" id="admissionRegisterHeaderBtn">
-          <i class="fa-solid fa-user-plus"></i> <span class="btn-text-full">ADMISSION REGISTRATION</span><span class="btn-text-short">REGISTER</span>
+          <i class="fa-solid fa-user-plus"></i> <span class="btn-text-full">ADMISSION REGISTRATION</span><span
+            class="btn-text-short">REGISTER</span>
         </a>
         <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu">
           <i class="fa-solid fa-bars"></i>
@@ -328,10 +329,11 @@
         </div>
       </div>
 
-      <!-- Mobile Testimonials Swipe Indicator -->
-      <div class="testimonial-swipe-hint">
-        <i class="fa-solid fa-arrows-left-right"></i>
-        <span>Swipe horizontally to view all parent reviews</span>
+      <!-- Testimonials Pagination Indicators -->
+      <div class="testimonial-dots" id="testimonialDots" aria-label="Review pagination">
+        <button class="testimonial-dot active" aria-label="Review 1" data-index="0"></button>
+        <button class="testimonial-dot" aria-label="Review 2" data-index="1"></button>
+        <button class="testimonial-dot" aria-label="Review 3" data-index="2"></button>
       </div>
     </div>
   </section>
@@ -497,7 +499,7 @@
           </div>
 
           <!-- Column 2: Timings -->
-          <div class="footer-col-ref">
+          <div class="footer-col-ref footer-timings-col">
             <h3 class="footer-col-title">Timings</h3>
             <div class="timings-block">
               <p class="timing-label">Monday – Saturday</p>
@@ -507,14 +509,11 @@
           </div>
 
           <!-- Column 3: Quick Link -->
-          <div class="footer-col-ref">
+          <div class="footer-col-ref footer-links-col">
             <h3 class="footer-col-title">Quick Link</h3>
             <ul class="footer-quick-links">
               <li><a href="#home">Home</a></li>
               <li><a href="#about">About Us</a></li>
-              <li><a href="#reviews">Reviews</a></li>
-              <li><a href="#gallery">Gallery</a></li>
-              <li><a href="#contact">Contact Us</a></li>
               <li><a href="admission.html">Admission Form</a></li>
             </ul>
           </div>

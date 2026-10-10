@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initAdmissionForm();
   initScrollEffects();
   initChildFriendlyInteractions();
+  initTestimonialsAutoScroll();
 });
 
 /* ==========================================================================
@@ -479,4 +480,126 @@ function initChildFriendlyInteractions() {
       }, 350);
     });
   }
+}
+
+/* ==========================================================================
+   6. Testimonials Automatic Timed Scroll & Pagination Indicators
+   ========================================================================== */
+function initTestimonialsAutoScroll() {
+  const grid = document.querySelector('.testimonial-grid');
+  const dotsContainer = document.querySelector('#testimonialDots');
+  if (!grid) return;
+
+  const cards = grid.querySelectorAll('.testimonial-card');
+  const dots = dotsContainer ? dotsContainer.querySelectorAll('.testimonial-dot') : [];
+  if (cards.length <= 1) return;
+
+  let currentIndex = 0;
+  let autoScrollTimer = null;
+  let resumeTimer = null;
+  let isUserInteracting = false;
+  const AUTO_SCROLL_DELAY = 4000; // 4-second timeout between reviews
+
+  function updateDots(index) {
+    if (!dots.length) return;
+    dots.forEach((dot, idx) => {
+      dot.classList.toggle('active', idx === index);
+    });
+  }
+
+  function scrollToCard(index, smooth = true) {
+    if (grid.scrollWidth <= grid.clientWidth) return;
+    const targetCard = cards[index];
+    if (!targetCard) return;
+
+    // Center card horizontally in the scroll area
+    const cardLeft = targetCard.offsetLeft;
+    const cardWidth = targetCard.offsetWidth;
+    const gridWidth = grid.clientWidth;
+    const targetScroll = cardLeft - (gridWidth - cardWidth) / 2;
+
+    grid.scrollTo({
+      left: Math.max(0, targetScroll),
+      behavior: smooth ? 'smooth' : 'auto'
+    });
+
+    currentIndex = index;
+    updateDots(index);
+  }
+
+  function advanceNextCard() {
+    if (isUserInteracting) return;
+    if (grid.scrollWidth <= grid.clientWidth) return;
+
+    const nextIndex = (currentIndex + 1) % cards.length;
+    scrollToCard(nextIndex, true);
+  }
+
+  function startAutoScroll() {
+    stopAutoScroll();
+    autoScrollTimer = setInterval(advanceNextCard, AUTO_SCROLL_DELAY);
+  }
+
+  function stopAutoScroll() {
+    if (autoScrollTimer) {
+      clearInterval(autoScrollTimer);
+      autoScrollTimer = null;
+    }
+  }
+
+  function pauseAndScheduleResume() {
+    isUserInteracting = true;
+    stopAutoScroll();
+    if (resumeTimer) clearTimeout(resumeTimer);
+    resumeTimer = setTimeout(() => {
+      isUserInteracting = false;
+      startAutoScroll();
+    }, 4500);
+  }
+
+  // Allow direct navigation via pagination dots
+  dots.forEach((dot, idx) => {
+    dot.addEventListener('click', () => {
+      scrollToCard(idx, true);
+      pauseAndScheduleResume();
+    });
+  });
+
+  // Keep active dot in sync when user manually swipes
+  let scrollDebounce = null;
+  grid.addEventListener('scroll', () => {
+    if (scrollDebounce) clearTimeout(scrollDebounce);
+    scrollDebounce = setTimeout(() => {
+      const scrollCenter = grid.scrollLeft + grid.clientWidth / 2;
+      let closestIdx = 0;
+      let minDistance = Infinity;
+
+      cards.forEach((card, idx) => {
+        const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+        const dist = Math.abs(cardCenter - scrollCenter);
+        if (dist < minDistance) {
+          minDistance = dist;
+          closestIdx = idx;
+        }
+      });
+
+      currentIndex = closestIdx;
+      updateDots(closestIdx);
+    }, 50);
+  }, { passive: true });
+
+  // Touch and hover gesture listeners
+  grid.addEventListener('touchstart', pauseAndScheduleResume, { passive: true });
+  grid.addEventListener('touchend', pauseAndScheduleResume, { passive: true });
+  grid.addEventListener('mouseenter', () => {
+    isUserInteracting = true;
+    stopAutoScroll();
+  });
+  grid.addEventListener('mouseleave', () => {
+    isUserInteracting = false;
+    startAutoScroll();
+  });
+
+  // Start the timed automatic scrolling
+  startAutoScroll();
 }
