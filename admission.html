@@ -227,9 +227,34 @@
             </div>
           </div>
 
-          <!-- SECTION 3: PICKUP AUTHORIZATION -->
+          <!-- SECTION 3: DAY CARE TIMING -->
           <div class="form-section-block">
-            <h3 class="form-block-title"><i class="fa-solid fa-id-card-clip"></i> 3. Pickup Authorization</h3>
+            <h3 class="form-block-title"><i class="fa-solid fa-clock"></i> 3. Day Care Timing</h3>
+
+            <div class="form-group">
+              <label>Select Plan Option *</label>
+              <div class="radio-options-grid">
+                <label class="radio-card-label">
+                  <input type="radio" name="Timing_Plan" value="Half Day">
+                  <span>Day Care</span>
+                </label>
+                <label class="radio-card-label">
+                  <input type="radio" name="Timing_Plan" value="After School Care">
+                  <span>After School Care</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-top: 1rem;">
+              <label for="preferredTiming">Preferred Timing (Specify Hours)</label>
+              <input type="text" id="preferredTiming" name="Preferred_Timing_Hours" class="form-control"
+                placeholder="e.g. 8:00 AM - 4:00 PM">
+            </div>
+          </div>
+
+          <!-- SECTION 4: PICKUP AUTHORIZATION -->
+          <div class="form-section-block">
+            <h3 class="form-block-title"><i class="fa-solid fa-id-card-clip"></i> 4. Pickup Authorization</h3>
             <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Persons authorized to pick up
               the child from daycare:</p>
 
@@ -270,35 +295,6 @@
                 <input type="tel" id="pickup3Phone" name="Pickup_Person_3_Phone" class="form-control"
                   placeholder="Phone number">
               </div>
-            </div>
-          </div>
-
-          <!-- SECTION 4: DAY CARE TIMING -->
-          <div class="form-section-block">
-            <h3 class="form-block-title"><i class="fa-solid fa-clock"></i> 4. Day Care Timing</h3>
-
-            <div class="form-group">
-              <label>Select Plan Option *</label>
-              <div class="radio-options-grid">
-                <label class="radio-card-label">
-                  <input type="radio" name="Timing_Plan" value="Full Day" required>
-                  <span>Full Day</span>
-                </label>
-                <label class="radio-card-label">
-                  <input type="radio" name="Timing_Plan" value="Half Day">
-                  <span>Half Day</span>
-                </label>
-                <label class="radio-card-label">
-                  <input type="radio" name="Timing_Plan" value="After School Care">
-                  <span>After School Care</span>
-                </label>
-              </div>
-            </div>
-
-            <div class="form-group" style="margin-top: 1rem;">
-              <label for="preferredTiming">Preferred Timing (Specify Hours)</label>
-              <input type="text" id="preferredTiming" name="Preferred_Timing_Hours" class="form-control"
-                placeholder="e.g. 8:00 AM - 4:00 PM">
             </div>
           </div>
 
