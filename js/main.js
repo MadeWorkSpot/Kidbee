@@ -87,6 +87,23 @@ function initLightboxModal() {
 const ADMISSION_RECEIVER_EMAIL = 'Kidbeedaycare@gmail.com';
 const DAYCARE_WHATSAPP_NUMBER = '918136819858';
 
+function formatAdmissionDate(value) {
+  if (!value) return 'N/A';
+
+  const date = value instanceof Date
+    ? value
+    : (() => {
+      const [year, month, day] = String(value).split('-').map(Number);
+      return year && month && day
+        ? new Date(year, month - 1, day)
+        : new Date(value);
+    })();
+
+  if (Number.isNaN(date.getTime())) return String(value);
+
+  return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+}
+
 function initAdmissionForm() {
   const form = document.querySelector('#admissionRegistrationForm');
   const modal = document.querySelector('#successModal');
@@ -112,13 +129,8 @@ function initAdmissionForm() {
       submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Generating Admission PDF...';
     }
 
-    // Generate unique Application ID and submission timestamp
-    const appId = 'KB-' + Math.floor(100000 + Math.random() * 900000);
-    const submissionDate = new Date().toLocaleDateString('en-IN', {
-      day: '2-digit',
-      month: 'short',
-      year: 'numeric'
-    });
+    // Generate the submission date for the PDF
+    const submissionDate = formatAdmissionDate(new Date());
 
     // Gather Form Data
     const childName = document.querySelector('#childName')?.value.trim() || 'Child';
@@ -136,10 +148,9 @@ function initAdmissionForm() {
     const p3Phone = document.querySelector('#pickup3Phone')?.value.trim() || '';
 
     const data = {
-      appId,
       submissionDate,
       childName,
-      childDob: document.querySelector('#childDob')?.value || 'N/A',
+      childDob: formatAdmissionDate(document.querySelector('#childDob')?.value),
       childAge: document.querySelector('#childAge')?.value.trim() || 'N/A',
       childGender: document.querySelector('#childGender')?.value || 'N/A',
       childBlood: document.querySelector('#childBlood')?.value || 'Not specified',
@@ -165,7 +176,7 @@ function initAdmissionForm() {
       foodRestrictions: document.querySelector('input[name="Food_Restrictions"]:checked')?.value || 'No',
       foodRestrictionDetails: document.querySelector('#foodRestrictionDetails')?.value.trim() || '',
       parentSignature: document.querySelector('#parentSignature')?.value.trim() || parentName,
-      declarationDate: document.querySelector('#declarationDate')?.value || submissionDate
+      declarationDate: formatAdmissionDate(document.querySelector('#declarationDate')?.value || submissionDate)
     };
 
     // 1. Generate & trigger PDF download on user's device
@@ -178,7 +189,6 @@ function initAdmissionForm() {
     // 2. Submit form copy in background to FormSubmit
     try {
       const formData = new FormData(form);
-      formData.append('Application_ID', appId);
       const actionUrl = form.getAttribute('action') || `https://formsubmit.co/ajax/${encodeURIComponent(ADMISSION_RECEIVER_EMAIL)}`;
       const endpoint = actionUrl.includes('/ajax/') ? actionUrl : actionUrl.replace('formsubmit.co/', 'formsubmit.co/ajax/');
 
@@ -192,7 +202,7 @@ function initAdmissionForm() {
     }
 
     // 3. Prepare WhatsApp Message URL with prefilled text
-    const whatsappMsg = `Hello KidBee Day Care! 👋\n\nI have submitted an Admission Form for *${childName}* (App No: ${appId}).\n\n• Parent Name: ${parentName}\n• Contact: ${contactPhone}\n• Plan: ${timingPlan}\n\nI am attaching our downloaded admission PDF to this chat. Kindly confirm receipt. Thank you!`;
+    const whatsappMsg = `Hello KidBee Day Care! 👋\n\nI have submitted an Admission Form for *${childName}*.\n\n• Parent Name: ${parentName}\n• Contact: ${contactPhone}\n• Plan: ${timingPlan}\n\nI am attaching our downloaded admission PDF to this chat. Kindly confirm receipt. Thank you!`;
     const whatsappUrl = `https://wa.me/${DAYCARE_WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMsg)}`;
 
     // 4. Update Success Modal content and button
@@ -262,8 +272,8 @@ async function generateAdmissionPDF(data) {
         </p>
       </div>
       <div style="text-align: right;">
-        <div style="background: #FFFBEB; border: 1.5px solid #FDE68A; color: #B45309; font-weight: 800; font-size: 12px; padding: 4px 10px; border-radius: 6px; display: inline-block;">
-          APP ID: ${data.appId}
+        <div style="background: #FFFBEB; border: 1.5px solid #FDE68A; color: #B45309; font-weight: 800; font-size: 12px; padding: 4px 10px; border-radius: 6px; display: inline-block; white-space: nowrap;">
+          ADMN NO: __________________
         </div>
         <p style="color: #64748B; font-size: 10.5px; margin: 4px 0 0 0;">
           Submitted: <strong>${data.submissionDate}</strong>
@@ -393,20 +403,17 @@ async function generateAdmissionPDF(data) {
       </table>
     </div>
 
-    <!-- PDF Verification & WhatsApp Dispatch Note -->
+    <!-- PDF Verification Note -->
     <div style="border-top: 1.5px dashed #CBD5E1; padding-top: 8px; margin-top: 10px; display: flex; justify-content: space-between; align-items: center; font-size: 10px; color: #64748B;">
       <div>
         <span>Status: <strong style="color: #166534;">SUBMITTED &amp; VERIFIED</strong></span> &bull; 
         <span>KidBee Day Care Early Learning Center</span>
       </div>
-      <div>
-        <span>Share this downloaded PDF on WhatsApp to <strong>+91 81368 19858</strong></span>
-      </div>
     </div>
   `;
 
   try {
-    const filename = `KidBee_Admission_${data.childName.replace(/[^a-zA-Z0-9]/g, '_')}_${data.appId}.pdf`;
+    const filename = `KidBee_Admission_${data.childName.replace(/[^a-zA-Z0-9]/g, '_')}.pdf`;
     const opt = {
       margin: [6, 6, 6, 6],
       filename: filename,
