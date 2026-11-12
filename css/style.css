@@ -1370,6 +1370,19 @@ img {
   accent-color: var(--color-primary);
 }
 
+.rules-link {
+  color: var(--color-primary);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.rules-link:hover,
+.rules-link:focus-visible {
+  color: var(--color-navy);
+}
+
 /* ==========================================================================
    Contact Section & Embedded Map Styling (Right Side Embedded Map)
    ========================================================================== */

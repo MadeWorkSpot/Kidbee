@@ -154,8 +154,6 @@ function initAdmissionForm() {
       childAge: document.querySelector('#childAge')?.value.trim() || 'N/A',
       childGender: document.querySelector('#childGender')?.value || 'N/A',
       childBlood: document.querySelector('#childBlood')?.value || 'Not specified',
-      childAllergies: document.querySelector('#childAllergies')?.value.trim() || 'None',
-      childMedical: document.querySelector('#childMedical')?.value.trim() || 'None',
       fatherName: fatherName || 'N/A',
       fatherPhone: document.querySelector('#fatherPhone')?.value.trim() || 'N/A',
       fatherOccupation: document.querySelector('#fatherOccupation')?.value.trim() || 'N/A',
@@ -172,9 +170,6 @@ function initAdmissionForm() {
       timingPlan,
       preferredTiming: document.querySelector('#preferredTiming')?.value.trim() || 'Standard Daycare Hours',
       underMedication: document.querySelector('input[name="Under_Medication"]:checked')?.value || 'No',
-      medicationDetails: document.querySelector('#medicationDetails')?.value.trim() || '',
-      foodRestrictions: document.querySelector('input[name="Food_Restrictions"]:checked')?.value || 'No',
-      foodRestrictionDetails: document.querySelector('#foodRestrictionDetails')?.value.trim() || '',
       parentSignature: document.querySelector('#parentSignature')?.value.trim() || parentName,
       declarationDate: formatAdmissionDate(document.querySelector('#declarationDate')?.value || submissionDate)
     };
@@ -302,12 +297,6 @@ async function generateAdmissionPDF(data) {
         <tr>
           <td style="padding: 6px 10px; font-weight: 600; color: #475569; background: #F8FAFC; border-bottom: 1px solid #E2E8F0;">Blood Group:</td>
           <td style="padding: 6px 10px; color: #0F172A; border-bottom: 1px solid #E2E8F0;">${data.childBlood}</td>
-          <td style="padding: 6px 10px; font-weight: 600; color: #475569; background: #F8FAFC; border-bottom: 1px solid #E2E8F0;">Allergies:</td>
-          <td style="padding: 6px 10px; color: #0F172A; border-bottom: 1px solid #E2E8F0;">${data.childAllergies}</td>
-        </tr>
-        <tr>
-          <td style="padding: 6px 10px; font-weight: 600; color: #475569; background: #F8FAFC;">Medical Condition:</td>
-          <td colspan="3" style="padding: 6px 10px; color: #0F172A;">${data.childMedical}</td>
         </tr>
       </table>
     </div>
@@ -379,15 +368,9 @@ async function generateAdmissionPDF(data) {
     <!-- Section 4: Health Declaration & Consent -->
     <div style="margin-bottom: 12px; border: 1px solid #E2E8F0; border-radius: 8px; overflow: hidden;">
       <div style="background: #293A69; color: #FFFFFF; font-weight: 700; font-size: 11.5px; padding: 5px 12px; text-transform: uppercase; letter-spacing: 0.5px;">
-        4. Health Declaration & Parent Consent
+        4. Parent Consent Declaration
       </div>
       <table style="width: 100%; border-collapse: collapse; font-size: 11px;">
-        <tr>
-          <td style="padding: 6px 10px; width: 22%; font-weight: 600; color: #475569; background: #F8FAFC; border-bottom: 1px solid #E2E8F0;">Under Medication:</td>
-          <td style="padding: 6px 10px; width: 28%; color: #0F172A; border-bottom: 1px solid #E2E8F0;">${data.underMedication} ${data.medicationDetails ? '(' + data.medicationDetails + ')' : ''}</td>
-          <td style="padding: 6px 10px; width: 22%; font-weight: 600; color: #475569; background: #F8FAFC; border-bottom: 1px solid #E2E8F0;">Food Restrictions:</td>
-          <td style="padding: 6px 10px; width: 28%; color: #0F172A; border-bottom: 1px solid #E2E8F0;">${data.foodRestrictions} ${data.foodRestrictionDetails ? '(' + data.foodRestrictionDetails + ')' : ''}</td>
-        </tr>
         <tr>
           <td style="padding: 6px 10px; font-weight: 600; color: #475569; background: #F8FAFC; border-bottom: 1px solid #E2E8F0;">Daycare Rules:</td>
           <td colspan="3" style="padding: 6px 10px; color: #166534; font-weight: 600; border-bottom: 1px solid #E2E8F0;">

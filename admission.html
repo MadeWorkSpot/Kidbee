@@ -142,19 +142,6 @@
                 </select>
               </div>
             </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="childAllergies">Allergies (if any)</label>
-                <input type="text" id="childAllergies" name="Allergies" class="form-control"
-                  placeholder="List any food or dust allergies">
-              </div>
-              <div class="form-group">
-                <label for="childMedical">Medical Condition (if any)</label>
-                <input type="text" id="childMedical" name="Medical_Condition" class="form-control"
-                  placeholder="Describe medical condition or notes">
-              </div>
-            </div>
           </div>
 
           <!-- SECTION 2: PARENT / GUARDIAN DETAILS -->
@@ -298,41 +285,17 @@
             </div>
           </div>
 
-          <!-- SECTION 5: HEALTH DECLARATION -->
+          <!-- SECTION 5: PARENT CONSENT DECLARATION -->
           <div class="form-section-block">
-            <h3 class="form-block-title"><i class="fa-solid fa-notes-medical"></i> 5. Health Declaration</h3>
-
-            <div class="form-group">
-              <label>Is the child currently under any medication? *</label>
-              <div class="radio-inline-group">
-                <label><input type="radio" name="Under_Medication" value="Yes" required> Yes</label>
-                <label><input type="radio" name="Under_Medication" value="No"> No</label>
-              </div>
-              <input type="text" id="medicationDetails" name="Medication_Details" class="form-control"
-                placeholder="If yes, specify medication details" style="margin-top: 0.5rem;">
-            </div>
-
-            <div class="form-group" style="margin-top: 1.25rem;">
-              <label>Any food restrictions? *</label>
-              <div class="radio-inline-group">
-                <label><input type="radio" name="Food_Restrictions" value="Yes" required> Yes</label>
-                <label><input type="radio" name="Food_Restrictions" value="No"> No</label>
-              </div>
-              <input type="text" id="foodRestrictionDetails" name="Food_Restriction_Details" class="form-control"
-                placeholder="If yes, specify food restriction details" style="margin-top: 0.5rem;">
-            </div>
-          </div>
-
-          <!-- SECTION 6: PARENT CONSENT DECLARATION -->
-          <div class="form-section-block">
-            <h3 class="form-block-title"><i class="fa-solid fa-signature"></i> 6. Parent Consent Declaration</h3>
+            <h3 class="form-block-title"><i class="fa-solid fa-signature"></i> 5. Parent Consent Declaration</h3>
 
             <div class="consent-box">
               <label class="checkbox-label">
                 <input type="checkbox" id="consentCheckbox" name="Consent_Agreed"
                   value="Yes, I agree to daycare rules and regulations" required>
-                <span>I hereby declare that the information provided above is true. I agree to follow the rules and
-                  regulations of the daycare centre.</span>
+                <span>I hereby declare that the information provided above is true. I agree to follow the <a
+                    href="rules-regulations.html" class="rules-link" target="_blank" rel="noopener">rules and
+                    regulations</a> of the daycare centre.</span>
               </label>
             </div>
 
